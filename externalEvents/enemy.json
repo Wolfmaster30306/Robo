@@ -88,62 +88,6 @@
             {
               "type": {
                 "inverted": false,
-                "value": "Create"
-              },
-              "parameters": [
-                "",
-                "enemys",
-                "DesertTile.X()",
-                "DesertTile.Y()",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "Create"
-              },
-              "parameters": [
-                "",
-                "enemys",
-                "DesertTile.CenterX()",
-                "DesertTile.CenterY()",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "Create"
-              },
-              "parameters": [
-                "",
-                "enemys",
-                "yett.X()",
-                "yett.Y()",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "Create"
-              },
-              "parameters": [
-                "",
-                "enemys",
-                "yett2.X()",
-                "yett2.Y()",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
                 "value": "ChangePlan"
               },
               "parameters": [
@@ -182,36 +126,7 @@
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "AddForceVersPos"
-                  },
-                  "parameters": [
-                    "enemys",
-                    "redline.X()",
-                    "redline.Y()",
-                    "10",
-                    "1"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "AddForceVersPos"
-                  },
-                  "parameters": [
-                    "enemys",
-                    "redline.CenterX()",
-                    "redline.CenterY()",
-                    "10",
-                    "1"
-                  ],
-                  "subInstructions": []
-                }
-              ],
+              "actions": [],
               "events": []
             }
           ]

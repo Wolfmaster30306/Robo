@@ -26,7 +26,7 @@
               },
               "parameters": [
                 "player",
-                "invisablebarrier",
+                "borderwall",
                 "",
                 "",
                 ""
@@ -42,43 +42,7 @@
               },
               "parameters": [
                 "player",
-                "invisablebarrier",
-                ""
-              ],
-              "subInstructions": []
-            }
-          ],
-          "events": []
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "CollisionNP"
-              },
-              "parameters": [
-                "player",
-                "border",
-                "",
-                "",
-                ""
-              ],
-              "subInstructions": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "SeparateFromObjects"
-              },
-              "parameters": [
-                "player",
-                "border",
+                "borderwall",
                 ""
               ],
               "subInstructions": []
@@ -281,9 +245,9 @@
               },
               "parameters": [
                 "",
-                "BlueLaser01",
-                "player.X()",
-                "player.Y()",
+                "laser",
+                "player.X(\"laser\")",
+                "player.Y(\"laser\")",
                 ""
               ],
               "subInstructions": []
@@ -294,7 +258,7 @@
                 "value": "ChangePlan"
               },
               "parameters": [
-                "BlueLaser01",
+                "laser",
                 "=",
                 "-1"
               ],
@@ -306,7 +270,7 @@
                 "value": "AddForceXY"
               },
               "parameters": [
-                "BlueLaser01",
+                "laser",
                 "0",
                 "250",
                 "1"
@@ -337,7 +301,7 @@
                 "value": "SourisSurObjet"
               },
               "parameters": [
-                "FireRoundButton",
+                "shoot",
                 "",
                 "",
                 ""
@@ -364,9 +328,9 @@
               },
               "parameters": [
                 "",
-                "BlueLaser01",
-                "player.X()",
-                "player.Y()",
+                "laser",
+                "player.X(\"laser\")",
+                "player.Y(\"laser\")",
                 ""
               ],
               "subInstructions": []
@@ -377,7 +341,7 @@
                 "value": "ChangePlan"
               },
               "parameters": [
-                "BlueLaser01",
+                "laser",
                 "=",
                 "-1"
               ],
@@ -389,7 +353,7 @@
                 "value": "AddForceXY"
               },
               "parameters": [
-                "BlueLaser01",
+                "laser",
                 "0",
                 "250",
                 "1"
@@ -424,7 +388,7 @@
                 "value": "CollisionNP"
               },
               "parameters": [
-                "BlueLaser01",
+                "laser",
                 "enemys",
                 "",
                 "",
@@ -451,7 +415,7 @@
                 "value": "Delete"
               },
               "parameters": [
-                "BlueLaser01",
+                "laser",
                 ""
               ],
               "subInstructions": []
@@ -483,7 +447,7 @@
                 "value": "TextObject::String"
               },
               "parameters": [
-                "number",
+                "Snumber",
                 "=",
                 "GlobalVariableString(Score)"
               ],
