@@ -1,0 +1,1972 @@
+{
+  "author": "Anitta Dev",
+  "description": "This version is beta, so there may be errors in the requests.\n\nThere are functions for Scores, Data Store, Time, Session, Users, Friends and Trophies.",
+  "extensionNamespace": "",
+  "fullName": "Game Jolt API",
+  "helpPath": "",
+  "iconUrl": "",
+  "name": "GameJoltAPI",
+  "previewIconUrl": "",
+  "shortDescription": "Make GameJolt API easier to use in GDevelop",
+  "version": "1.0.0",
+  "tags": [
+    "api gamejolt"
+  ],
+  "dependencies": [],
+  "eventsFunctions": [
+    {
+      "description": "Load Gamejolt API dependencies of the game.",
+      "fullName": "Load Game Jolt API",
+      "functionType": "Action",
+      "name": "LoadGameJoltAPI",
+      "private": false,
+      "sentence": "Load GameJolt API",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "if (!window.GameJoltAPI) {\n    let script = document.createElement(\"script\");\n    script.src = \"https://maurydev.github.io/game-jolt-api-gdevelop/lib/versions/1.0.1/index.min.js\";\n    script.type = \"text/javascript\";\n    document.head.appendChild(script);\n}",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "The condition returns returns true when the Game Jolt API finishes loading.",
+      "fullName": "GameJolt API loading success",
+      "functionType": "Condition",
+      "name": "LoadAPISuccess",
+      "private": false,
+      "sentence": "GameJolt API loading success",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = !!window.GameJoltAPI;\r\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "This action configure the Gamejolt API to work.",
+      "fullName": "GameJolt API Configuration",
+      "functionType": "Action",
+      "name": "GameJolt_API_Configuration",
+      "private": false,
+      "sentence": "GameJolt API Configuration. Private Key: _PARAM1_,Game ID: _PARAM2_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name);\r\nruntimeScene.getGame().GameJoltAPI = window.GameJoltAPI(args(\"key\"),args(\"game_id\"));\r\ngdjs.evtTools.toScriptVariable = runtimeScene.getGame().GameJoltAPI.toScriptVariable;",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The Private Key of your game.",
+          "longDescription": "",
+          "name": "key",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The ID of your game.",
+          "longDescription": "",
+          "name": "game_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Adds a score for a guest.",
+      "fullName": "Add Score Guest",
+      "functionType": "Action",
+      "name": "ScoreGuest",
+      "private": false,
+      "sentence": "Add Score Guest. Score: _PARAM1_,Sort: _PARAM2_,Guest name: _PARAM3_,Table ID: _PARAM4_,Message ID: _PARAM5_,Extra Data: _PARAM6_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\n    score = args(\"score\"),\n    sort = args(\"sort\"),\n    guest = args(\"guest\"),\n    table_id = args(\"table_id\"),\n    extra_data = args(\"extra_data\"),\n    message_id = args(\"message_id\");\n\n\nGJ_API.methods.AddScoreGuest(score, sort, table_id, guest, message_id, extra_data);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "This is a string value associated with the score. Example: 500 Points",
+          "longDescription": "",
+          "name": "score",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "This is a numerical sorting value associated with the score. All sorting will be based on this number. Example: 500",
+          "longDescription": "",
+          "name": "sort",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The guest's name.",
+          "longDescription": "",
+          "name": "guest",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The ID of the score table to submit to.",
+          "longDescription": "",
+          "name": "table_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "If there's any extra data you would like to store as a string, you can use this variable.(optional)",
+          "longDescription": "",
+          "name": "extra_data",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Adds a score for a user",
+      "fullName": "Add Score User",
+      "functionType": "Action",
+      "name": "ScoreUser",
+      "private": false,
+      "sentence": "Add Score User. Score Text: _PARAM1_,Score Number: _PARAM2_,Username: _PARAM3_,User Token: _PARAM4_,Table ID: _PARAM5_,Message ID: _PARAM6_,Extra Data: _PARAM7_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\n    score = args(\"score\"),\n    sort = args(\"sort\"),\n    username = args(\"username\"),\n    user_token = args(\"user_token\"),\n    table_id = args(\"table_id\"),\n    message_id = args(\"message_id\"),\n    extra_data = args(\"extra_data\");\n\nGJ_API.methods.AddScoreUser(score, sort,table_id, username,user_token, message_id, extra_data)",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "This is a string value associated with the score. Example: 500 Points",
+          "longDescription": "",
+          "name": "score",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "This is a numerical sorting value associated with the score. All sorting will be based on this number. Example: 500",
+          "longDescription": "",
+          "name": "sort",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The ID of the score table to submit to.",
+          "longDescription": "",
+          "name": "table_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "If there's any extra data you would like to store as a string, you can use this variable. (optional)",
+          "longDescription": "",
+          "name": "extra_data",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Save rank value in message id",
+      "fullName": "Get Rank",
+      "functionType": "Action",
+      "name": "GetRank",
+      "private": false,
+      "sentence": "Get Rank. Score Value: _PARAM1_,Table ID: _PARAM2_,Message ID: _PARAM3_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var GJ_API = runtimeScene.getGame().GameJoltAPI,\r\n    args = (name) => eventsFunctionContext.getArgument(name),\r\n    sort = args(\"sort\"),\r\n    table_id = args(\"table_id\"),\r\n    message_id = eventsFunctionContext.getArgument(\"message_id\");\r\nGJ_API.methods.GetRank(sort,table_id,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "This is a numerical sorting value that is represented by a rank on the score table.",
+          "longDescription": "",
+          "name": "sort",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The ID of the score table from which you want to get the rank.",
+          "longDescription": "",
+          "name": "table_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "The rank of the score on the score table.",
+      "fullName": "Response Rank",
+      "functionType": "StringExpression",
+      "name": "ResponseRank",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var GJ_API = runtimeScene.getGame().GameJoltAPI,\n    message_id = eventsFunctionContext.getArgument(\"message_id\"),\nif (GJ_API) {\n    eventsFunctionContext.returnValue = GJ_API.data_message(message_id).rank\n} else {\n    eventsFunctionContext.returnValue = \"\";\n}",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Request a list of high score tables and save in an message id.",
+      "fullName": " Get Tables",
+      "functionType": "Action",
+      "name": "GetTables",
+      "private": false,
+      "sentence": "Tables. Message ID: _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var message_id = eventsFunctionContext.getArgument(\"message_id\"),\n    GJ_API = runtimeScene.getGame().GameJoltAPI;\nGJ_API.methods.GetTables(message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Save all tables in one global variable",
+      "fullName": "Response Tables",
+      "functionType": "Action",
+      "name": "ResponseTables",
+      "private": false,
+      "sentence": "Response Tables. Message ID: _PARAM1_,Variable Data: _PARAM2_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var GJ_API = runtimeScene.getGame().GameJoltAPI,\r\n    message_id = eventsFunctionContext.getArgument(\"message_id\"),\r\n    variable = eventsFunctionContext.getArgument(\"variable\");\r\n\r\nif (GJ_API) {\r\n    if (variable.length) {\r\n        let message_id_ = GJ_API.data_message(message_id);\r\n        gdjs.evtTools.network._objectToVariable(message_id_.tables, eval(gdjs.evtTools.toScriptVariable(variable)))\r\n    }\r\n}",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Variable with the data.",
+          "longDescription": "",
+          "name": "variable",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Authenticates the user's information. This should be done before you make any calls for the user, to make sure the user's credentials (username and token) are valid.",
+      "fullName": "Auth User",
+      "functionType": "Action",
+      "name": "UserAuth",
+      "private": false,
+      "sentence": "Auth User. Username: _PARAM1_,User Token: _PARAM2_,Message ID: _PARAM3_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\n    username = args(\"username\"),\n    user_token = args(\"user_token\"),\n    message_id = args(\"message_id\");\nGJ_API.methods.User_Auth(username, user_token, message_id)",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Run a function when receiving a message.",
+      "fullName": "New Message from ID",
+      "functionType": "Condition",
+      "name": "OnMessage",
+      "private": false,
+      "sentence": "New Message from ID: _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var message_id = eventsFunctionContext.getArgument(\"message_id\"),\r\n    GJ_API = runtimeScene.getGame().GameJoltAPI;\r\nif (GJ_API) {\r\n    eventsFunctionContext.returnValue = GJ_API.some_message(message_id);\r\n}",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message  ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "If the request was not successful, this contains the error message.\nExample: Unknown fatal error occurred.",
+      "fullName": "Response Error Message",
+      "functionType": "StringExpression",
+      "name": "ResponseMessageError",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var GJ_API = runtimeScene.getGame().GameJoltAPI,\n    message_id = eventsFunctionContext.getArgument(\"message_id\");\nif (GJ_API) {\n    eventsFunctionContext.returnValue = GJ_API.data_message(message_id).message;\n}\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Whether the request succeeded or failed.",
+      "fullName": "Response Sucess",
+      "functionType": "Condition",
+      "name": "ResponseSucess",
+      "private": false,
+      "sentence": "Response Sucess in Message ID: _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var GJ_API = runtimeScene.getGame().GameJoltAPI,\r\n    message_id = eventsFunctionContext.getArgument(\"message_id\"),\r\nif (GJ_API) {\r\n    eventsFunctionContext.returnValue = GJ_API.data_message(message_id).success\r\n}",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Request a score list for a user or globally for a game and save in an message id.",
+      "fullName": "Fetch Scores",
+      "functionType": "Action",
+      "name": "FetchScore",
+      "private": false,
+      "sentence": "Fetch Score. Limit: _PARAM1_,Table ID: _PARAM2_,Username: _PARAM3_,User Token: _PARAM4_,Guest: _PARAM5_,Better Than: _PARAM6_, worse Than: _PARAM7_,Message ID: _PARAM8_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\n    limit = args(\"limit\"),\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\n    table_id = args(\"table_id\"),\n    username = args(\"username\"),\n    user_token = args(\"user_token\"),\n    guest = args(\"guest\"),\n    better_than = args(\"better_than\"),\n    worse_than = args(\"worse_than\"),\n    message_id = args(\"message_id\");\n\nGJ_API.methods.FetchScores(limit,table_id,username,user_token,guest,better_than,worse_than,message_id)",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The number of scores you'd like to return.",
+          "longDescription": "",
+          "name": "limit",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The ID of the score table.",
+          "longDescription": "",
+          "name": "table_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "A guest's name",
+          "longDescription": "",
+          "name": "guest",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Fetch only scores better than this score sort value.",
+          "longDescription": "",
+          "name": "better_than",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Fetch only scores worse than this score sort value.",
+          "longDescription": "",
+          "name": "worse_than",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Save all scores in one global variable",
+      "fullName": "Response Scores",
+      "functionType": "Action",
+      "name": "ResponseScore",
+      "private": false,
+      "sentence": "Response Tables. Message ID: _PARAM1_,Variable Data: _PARAM2_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var GJ_API = runtimeScene.getGame().GameJoltAPI,\n    message_id = eventsFunctionContext.getArgument(\"message_id\"),\n    variable = eventsFunctionContext.getArgument(\"variable\");\n\nif (GJ_API) {\n    if (variable.length) {\n        let message_id_ = GJ_API.data_message(message_id);\n        gdjs.evtTools.network._objectToVariable(message_id_.scores, eval(gdjs.evtTools.toScriptVariable(variable)))\n    }\n}",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Variable with the data.",
+          "longDescription": "",
+          "name": "variable",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Request a user's friend list and save to an message id.",
+      "fullName": "Get Friends",
+      "functionType": "Action",
+      "name": "GetFriends",
+      "private": false,
+      "sentence": "Get Friends. Username: _PARAM1_,User Token: _PARAM2_, Message ID: _PARAM3_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\r\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\r\n    username = args(\"username\"),\r\n    user_token = args(\"user_token\"),\r\n    message_id = args(\"message_id\");\r\n\r\nGJ_API.methods.GetFriends(username,user_token,message_id)",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Save all friends in one global variable",
+      "fullName": "Response Friends",
+      "functionType": "Action",
+      "name": "ResponseFriends",
+      "private": false,
+      "sentence": "Response Friends. Message ID: _PARAM1_,Variable Data: _PARAM2_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var GJ_API = runtimeScene.getGame().GameJoltAPI,\n    message_id = eventsFunctionContext.getArgument(\"message_id\"),\n    variable = eventsFunctionContext.getArgument(\"variable\");\n\nif (GJ_API) {\n    if (variable.length) {\n        let message_id_ = GJ_API.data_message(message_id);\n        gdjs.evtTools.network._objectToVariable(message_id_.friends, eval(gdjs.evtTools.toScriptVariable(variable)))\n    }\n}",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Variable with the data.",
+          "longDescription": "",
+          "name": "variable",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Request data from a user and save to an message id.",
+      "fullName": "Fetch Users",
+      "functionType": "Action",
+      "name": "FetchUsers",
+      "private": false,
+      "sentence": "Fetch User. Username: _PARAM1_,User ID: _PARAM2_,Message ID: _PARAM3_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\n    username = args(\"username\"),\n    user_id = args(\"user_id\"),\n    message_id = args(\"message_id\");\n\nGJ_API.methods.FetchUsers(username,user_id,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The username of the user whose data you'd like to fetch.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The ID of the user whose data you'd like to fetch.",
+          "longDescription": "",
+          "name": "user_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Request a user's data list and save to an message id.",
+      "fullName": "Response Users",
+      "functionType": "Action",
+      "name": "ResponseUsers",
+      "private": false,
+      "sentence": "Response Users. Message ID: _PARAM1_,Variable Data: _PARAM2_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var GJ_API = runtimeScene.getGame().GameJoltAPI,\n    message_id = eventsFunctionContext.getArgument(\"message_id\"),\n    variable = eventsFunctionContext.getArgument(\"variable\");\n\nif (GJ_API) {\n    if (variable.length) {\n        let message_id_ = GJ_API.data_message(message_id);\n        gdjs.evtTools.network._objectToVariable(message_id_.friends, eval(gdjs.evtTools.toScriptVariable(variable)))\n    }\n}",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Variable with the data.",
+          "longDescription": "",
+          "name": "variable",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Opens a game session for a particular user and allows you to tell Game Jolt that a user is playing your game. You must ping the session to keep it active and you must close it when you're done with it.",
+      "fullName": "Open Session",
+      "functionType": "Action",
+      "name": "OpenSession",
+      "private": false,
+      "sentence": "Open Session. Username: _PARAM1_, User Token: _PARAM2_, Message ID: _PARAM3_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\n    username = args(\"username\"),\n    user_token = args(\"user_token\"),\n    message_id = args(\"message_id\");\n\nGJ_API.methods.OpenSession(username,user_token,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Pings an open session to tell the system that it's still active. If the session hasn't been pinged within 120 seconds, the system will close the session and you will have to open another one. It's recommended that you ping about every 30 seconds or so to keep the system from clearing out your session.\n\nYou can also let the system know whether the player is in an active or idle state within your game.",
+      "fullName": "Ping Session",
+      "functionType": "Action",
+      "name": "PingSession",
+      "private": false,
+      "sentence": "Ping Session. Username: _PARAM1_,User Token: _PARAM2_, Status: _PARAM3_,Message ID: _PARAM4_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\n    username = args(\"username\"),\n    user_token = args(\"user_token\"),\n    status = args(\"status\"),\n    message_id = args(\"message_id\");\n\nGJ_API.methods.PingSession(username,user_token,status,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Sets the status of the session.",
+          "longDescription": "",
+          "name": "status",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Checks to see if there is an open session for the user. Can be used to see if a particular user account is active in the game.",
+      "fullName": "Check Session",
+      "functionType": "Action",
+      "name": "CheckSession",
+      "private": false,
+      "sentence": "Open Session. Username: _PARAM1_, User Token: _PARAM2_, Message ID: _PARAM3_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\n    username = args(\"username\"),\n    user_token = args(\"user_token\"),\n    message_id = args(\"message_id\");\n\nGJ_API.methods.CheckSession(username,user_token,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Closes the active session.",
+      "fullName": "Close Session",
+      "functionType": "Action",
+      "name": "CloseSession",
+      "private": false,
+      "sentence": "Open Session. Username: _PARAM1_, User Token: _PARAM2_, Message ID: _PARAM3_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\n    username = args(\"username\"),\n    user_token = args(\"user_token\"),\n    message_id = args(\"message_id\");\n\nGJ_API.methods.CloseSession(username,user_token,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Sets a trophy as achieved for a particular user.",
+      "fullName": "Add Achieved",
+      "functionType": "Action",
+      "name": "Add_Achieved",
+      "private": false,
+      "sentence": "Add Achieved. Username: _PARAM1_, User Token: _PARAM2_, Trophy ID: _PARAM3_, Message ID: _PARAM4_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\r\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\r\n    username = args(\"username\"),\r\n    user_token = args(\"user_token\"),\r\n    trophy_id = args(\"trophy_id\"),\r\n    message_id = args(\"message_id\");\r\n\r\nGJ_API.methods.Add_Achieved(username,user_token,trophy_id,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The ID of the trophy to add for the user.",
+          "longDescription": "",
+          "name": "trophy_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Remove a previously achieved trophy for a particular user.",
+      "fullName": "Remove Achieved",
+      "functionType": "Action",
+      "name": "RemoveAchieved",
+      "private": false,
+      "sentence": "Add Achieved. Username: _PARAM1_, User Token: _PARAM2_, Trophy ID: _PARAM3_, Message ID: _PARAM4_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\r\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\r\n    username = args(\"username\"),\r\n    user_token = args(\"user_token\"),\r\n    trophy_id = args(\"trophy_id\"),\r\n    message_id = args(\"message_id\");\r\n\r\nGJ_API.methods.RemoveAchieved(username,user_token,trophy_id,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The ID of the trophy to add for the user.",
+          "longDescription": "",
+          "name": "trophy_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Request a trophy or several trophies, depending on the parameters passed, and save in an identification message.",
+      "fullName": "Fetch Trophies",
+      "functionType": "Action",
+      "name": "FetchTrophies",
+      "private": false,
+      "sentence": "Fetch Trophies. Username: _PARAM1_, User Token: _PARAM2_ , Achieved: _PARAM3_, Trophy ID: _PARAM4_,Message ID: _PARAM5_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\r\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\r\n    username = args(\"username\"),\r\n    user_token = args(\"user_token\"),\r\n    achieved = args(\"achieved\"),\r\n    trophy_id = args(\"trophy_id\"),\r\n    message_id = args(\"message_id\");\r\n\r\nGJ_API.methods.FetchTrophies(username,user_token,trophy_id,achieved,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Pass in true to return only the achieved trophies for a user. Pass in false to return only trophies the user hasn't achieved. Leave blank to retrieve all trophies.",
+          "longDescription": "",
+          "name": "achieved",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "If you would like to return just one trophy, you may pass the trophy ID with this parameter. If you do, only that trophy will be returned in the response. You may also pass multiple trophy IDs here if you want to return a subset of all the trophies. You do this as a comma-separated list in the same way you would for retrieving multiple users. Passing a trophy_id will ignore the achieved parameter if it is passed.",
+          "longDescription": "",
+          "name": "trophy_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Save all trophy in one global variable.",
+      "fullName": "Response Trophies",
+      "functionType": "Action",
+      "name": "ResponseTrophies",
+      "private": false,
+      "sentence": "Response Trophies. Message ID: _PARAM1_,Variable Data: _PARAM2_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var GJ_API = runtimeScene.getGame().GameJoltAPI,\n    message_id = eventsFunctionContext.getArgument(\"message_id\"),\n    variable = eventsFunctionContext.getArgument(\"variable\");\n\nif (GJ_API) {\n    if (variable.length) {\n        let message_id_ = GJ_API.data_message(message_id);\n        gdjs.evtTools.network._objectToVariable(message_id_.trophies, eval(gdjs.evtTools.toScriptVariable(variable)))\n    }\n}",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Variable with the data.",
+          "longDescription": "",
+          "name": "variable",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Sets data in the data store.",
+      "fullName": "Set Data Store",
+      "functionType": "Action",
+      "name": "SetDataStore",
+      "private": false,
+      "sentence": "Set Data Store. Key: _PARAM1_, Data: _PARAM2_, Username: _PARAM3_, User Token: _PARAM4_, Message ID: _PARAM5_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\r\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\r\n    username = args(\"username\"),\r\n    user_token = args(\"user_token\"),\r\n    key = args(\"key\"),\r\n    data = args(\"data\"),\r\n    message_id = args(\"message_id\");\r\n\r\nGJ_API.methods.SetDataStore(key,data,username,user_token,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The key of the data item you'd like to set.",
+          "longDescription": "",
+          "name": "key",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The data you'd like to set.",
+          "longDescription": "",
+          "name": "data",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Sets data in the data store.",
+      "fullName": "Set Data Store",
+      "functionType": "Action",
+      "name": "UpdateDataStore",
+      "private": false,
+      "sentence": "Set Data Store. Key: _PARAM1_, Username: _PARAM2_, User Token: _PARAM3_, Operation: _PARAM4_, Value: _PARAM5_, Message ID: _PARAM6_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\r\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\r\n    username = args(\"username\"),\r\n    user_token = args(\"user_token\"),\r\n    key = args(\"key\"),\r\n    operation = args(\"operation\"),\r\n    message_id = args(\"message_id\"),\r\n    value = args(\"value\");\r\n\r\nGJ_API.methods.UpdateDataStore(key,username,user_token,operation,value,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The key of the data item you'd like to update.",
+          "longDescription": "",
+          "name": "key",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The operation you'd like to perform.",
+          "longDescription": "",
+          "name": "operation",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The value you'd like to apply to the data store item. (See table below.)",
+          "longDescription": "",
+          "name": "value",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Removes data from the data store.",
+      "fullName": "Remove Data Store",
+      "functionType": "Action",
+      "name": "RemoveDataStore",
+      "private": false,
+      "sentence": "Remove Data Store. Key: _PARAM1_ , Username: _PARAM2_ , User Token: _PARAM3_ , Message ID: _PARAM4_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\n    username = args(\"username\"),\n    user_token = args(\"user_token\"),\n    key = args(\"key\"),\n    message_id = args(\"message_id\");\n\nGJ_API.methods.RemoveDataStore(key,username,user_token,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The key of the data item you'd like to remove.",
+          "longDescription": "",
+          "name": "key",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Fetch a key and return the data.",
+      "fullName": "Fetch Data Store",
+      "functionType": "Action",
+      "name": "FetchDataStore",
+      "private": false,
+      "sentence": "Remove Data Store. Key: _PARAM1_ , Username: _PARAM2_ , User Token: _PARAM3_ , Message ID: _PARAM4_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\r\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\r\n    username = args(\"username\"),\r\n    user_token = args(\"user_token\"),\r\n    key = args(\"key\"),\r\n    message_id = args(\"message_id\");\r\n\r\nGJ_API.methods.FetchDataStore(key,username,user_token,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The key of the data item you'd like to fetch.",
+          "longDescription": "",
+          "name": "key",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "If the request was successful, this contains the item's data.\nExample: Some example data.",
+      "fullName": "Response Data",
+      "functionType": "StringExpression",
+      "name": "ResponseData",
+      "private": false,
+      "sentence": "Response Data. Message ID: _PARAM1_, Variable Data: _PARAM2_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var GJ_API = runtimeScene.getGame().GameJoltAPI,\r\n    message_id = eventsFunctionContext.getArgument(\"message_id\"),\r\nif (GJ_API) {\r\n    eventsFunctionContext.returnValue = GJ_API.data_message(message_id).data\r\n} else {\r\n    eventsFunctionContext.returnValue = \"\";\r\n}",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Fetch all keys in the global game data store or all keys in the user data store and save the results to an message id.",
+      "fullName": "Get Keys Data Store",
+      "functionType": "Action",
+      "name": "GetKeysDataStore",
+      "private": false,
+      "sentence": "Get Keys Data Store. Pattern: _PARAM1_, Username: _PARAM2_, User Token: _PARAM3_, Message ID: _PARAM4_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\r\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\r\n    username = args(\"username\"),\r\n    user_token = args(\"user_token\"),\r\n    pattern = args(\"pattern\"),\r\n    message_id = args(\"message_id\");\r\n\r\nGJ_API.methods.GetKeysDataStore(pattern,username,user_token,message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The pattern to apply to the key names in the data store.",
+          "longDescription": "",
+          "name": "pattern",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's username.",
+          "longDescription": "",
+          "name": "username",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "The user's token.",
+          "longDescription": "",
+          "name": "user_token",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Save all keys in one global variable.",
+      "fullName": "Response Keys",
+      "functionType": "Action",
+      "name": "ResponseKeys",
+      "private": false,
+      "sentence": "Response Keys. Message ID: _PARAM1_, Variable Data: _PARAM2_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var GJ_API = runtimeScene.getGame().GameJoltAPI,\n    message_id = eventsFunctionContext.getArgument(\"message_id\"),\n    variable = eventsFunctionContext.getArgument(\"variable\");\n\nif (GJ_API) {\n    if (variable.length) {\n        let message_id_ = GJ_API.data_message(message_id);\n        gdjs.evtTools.network._objectToVariable(message_id_.keys, eval(gdjs.evtTools.toScriptVariable(variable)))\n    }\n}",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Variable with the data.",
+          "longDescription": "",
+          "name": "variable",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Save Game Jolt server time in an message id",
+      "fullName": "Get Time Server",
+      "functionType": "Action",
+      "name": "GetTimeServer",
+      "private": false,
+      "sentence": "Get Time Server. Message ID: _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var args = (name) => eventsFunctionContext.getArgument(name),\n    GJ_API = runtimeScene.getGame().GameJoltAPI,\n    message_id = args(\"message_id\");\n\nGJ_API.methods.GetTime(message_id);",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Save Time Server in one global variable",
+      "fullName": "Response Time Server",
+      "functionType": "Action",
+      "name": "ResponseTimeServer",
+      "private": false,
+      "sentence": "Response Time Server. Message ID: _PARAM1_, Variable Data: _PARAM2_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var GJ_API = runtimeScene.getGame().GameJoltAPI,\n    message_id = eventsFunctionContext.getArgument(\"message_id\"),\n    variable = eventsFunctionContext.getArgument(\"variable\");\n\nif (GJ_API) {\n    if (variable.length) {\n        let message_id_ = GJ_API.data_message(message_id);\n        var data = {\n            timestamp: message_id_.timestamp,\n            timezone: message_id_.timezone,\n            year: message_id_.year,\n            month: message_id_.month,\n            day: message_id_.day,\n            hour: message_id_.hour,\n            minutes: message_id_.minutes,\n            second: message_id_.second\n        }\n        gdjs.evtTools.network._objectToVariable(data, eval(gdjs.evtTools.toScriptVariable(variable)))\n    }\n}",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message ID",
+          "longDescription": "",
+          "name": "message_id",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Variable with the data.",
+          "longDescription": "",
+          "name": "variable",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Return username",
+      "fullName": "Username",
+      "functionType": "StringExpression",
+      "name": "Username",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = (window.GameJoltAPI) ? window.GameJoltAPI.info.username : \"\";",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "Return User Token",
+      "fullName": "User Token",
+      "functionType": "StringExpression",
+      "name": "User_Token",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = (window.GameJoltAPI) ? window.GameJoltAPI.info.user_token : \"\";",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "Verify that the user is a user or guest.",
+      "fullName": "Is Guest",
+      "functionType": "Condition",
+      "name": "IsGuest",
+      "private": false,
+      "sentence": "Is Guest",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = (window.GameJoltAPI) ? window.GameJoltAPI.info.isGuest : false;",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "Make sure the game is hosting on GameJolt CDN.",
+      "fullName": "Is Origin From CDN",
+      "functionType": "Condition",
+      "name": "IsOriginFromCDN",
+      "private": false,
+      "sentence": "Is Origin From CDN",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = (window.GameJoltAPI) ? window.GameJoltAPI.info.IsOriginFromCDN : false;",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "Return Game ID",
+      "fullName": "Game ID",
+      "functionType": "StringExpression",
+      "name": "game_id",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = (window.GameJoltAPI) ? window.GameJoltAPI.info.game_id : \"\";",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    }
+  ],
+  "eventsBasedBehaviors": []
+}
