@@ -799,9 +799,9 @@
       "font": "MechanismoRegular-p7ywa.otf",
       "characterSize": 60,
       "color": {
-        "b": 252,
-        "g": 252,
-        "r": 252
+        "b": 226,
+        "g": 144,
+        "r": 74
       }
     },
     {
@@ -819,9 +819,9 @@
       "font": "MechanismoRegular-p7ywa.otf",
       "characterSize": 60,
       "color": {
-        "b": 255,
-        "g": 255,
-        "r": 255
+        "b": 226,
+        "g": 144,
+        "r": 74
       }
     },
     {
@@ -839,9 +839,9 @@
       "font": "MechanismoRegular-p7ywa.otf",
       "characterSize": 60,
       "color": {
-        "b": 255,
-        "g": 255,
-        "r": 255
+        "b": 226,
+        "g": 144,
+        "r": 74
       }
     },
     {
@@ -859,9 +859,9 @@
       "font": "MechanismoRegular-p7ywa.otf",
       "characterSize": 60,
       "color": {
-        "b": 255,
-        "g": 255,
-        "r": 255
+        "b": 226,
+        "g": 144,
+        "r": 74
       }
     }
   ],
