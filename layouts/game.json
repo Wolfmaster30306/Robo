@@ -1101,6 +1101,14 @@
         "includeConfig": 0
       },
       "target": "Highscore"
+    },
+    {
+      "disabled": false,
+      "folded": false,
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [],
+      "events": []
     }
   ],
   "layers": [
