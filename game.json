@@ -783,7 +783,88 @@
     ],
     "resourceFolders": []
   },
-  "objects": [],
+  "objects": [
+    {
+      "bold": false,
+      "italic": false,
+      "name": "Highscore",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Highscore:",
+      "font": "MechanismoRegular-p7ywa.otf",
+      "characterSize": 60,
+      "color": {
+        "b": 252,
+        "g": 252,
+        "r": 252
+      }
+    },
+    {
+      "bold": false,
+      "italic": false,
+      "name": "hsn",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "0",
+      "font": "MechanismoRegular-p7ywa.otf",
+      "characterSize": 60,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      }
+    },
+    {
+      "bold": false,
+      "italic": false,
+      "name": "Snumber",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "0",
+      "font": "MechanismoRegular-p7ywa.otf",
+      "characterSize": 60,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      }
+    },
+    {
+      "bold": false,
+      "italic": false,
+      "name": "Score",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Score:",
+      "font": "MechanismoRegular-p7ywa.otf",
+      "characterSize": 60,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      }
+    }
+  ],
   "objectsGroups": [],
   "variables": [
     {
@@ -795,6 +876,11 @@
       "name": "Lives",
       "type": "string",
       "value": "10"
+    },
+    {
+      "name": "Highscore",
+      "type": "string",
+      "value": "0"
     }
   ],
   "layouts": [
@@ -805,6 +891,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/layouts/game"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/layouts/game-over"
     }
   ],
   "externalEvents": [
@@ -823,6 +913,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/externalEvents/mobile-controls"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/externalEvents/highscore"
     }
   ],
   "eventsFunctionsExtensions": [

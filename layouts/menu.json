@@ -13,17 +13,15 @@
   "v": 0,
   "uiSettings": {
     "grid": false,
-    "gridB": 255,
-    "gridG": 180,
+    "gridType": "rectangular",
+    "gridWidth": 32,
     "gridHeight": 32,
     "gridOffsetX": 0,
     "gridOffsetY": 0,
-    "gridR": 158,
-    "gridType": "rectangular",
-    "gridWidth": 32,
+    "gridColor": 10401023,
     "snap": true,
-    "windowMask": false,
-    "zoomFactor": 0.4599999999999997
+    "zoomFactor": 0.4599999999999997,
+    "windowMask": false
   },
   "objectsGroups": [],
   "variables": [],
@@ -389,6 +387,16 @@
             "yes",
             "",
             ""
+          ],
+          "subInstructions": []
+        },
+        {
+          "type": {
+            "inverted": false,
+            "value": "LoadFile"
+          },
+          "parameters": [
+            "\"HighScore\""
           ],
           "subInstructions": []
         }

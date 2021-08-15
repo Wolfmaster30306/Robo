@@ -67,8 +67,8 @@
       "name": "Snumber",
       "persistentUuid": "08cf5422-bda9-4200-a026-291192870a67",
       "width": 0,
-      "x": 152,
-      "y": 16,
+      "x": 226,
+      "y": 18,
       "zOrder": 57,
       "numberProperties": [],
       "stringProperties": [],
@@ -230,6 +230,38 @@
       "x": 800,
       "y": 0,
       "zOrder": 71,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "Highscore",
+      "persistentUuid": "ae34df6d-89e9-436a-9135-37e2819f82e3",
+      "width": 0,
+      "x": 1506,
+      "y": 13,
+      "zOrder": 72,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "hsn",
+      "persistentUuid": "3ece20ed-b22e-4899-befd-1158440269b8",
+      "width": 0,
+      "x": 1856,
+      "y": 17,
+      "zOrder": 73,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -438,46 +470,6 @@
           ]
         }
       ]
-    },
-    {
-      "bold": true,
-      "italic": false,
-      "name": "Score",
-      "smoothed": true,
-      "tags": "",
-      "type": "TextObject::Text",
-      "underlined": false,
-      "variables": [],
-      "effects": [],
-      "behaviors": [],
-      "string": "Score:",
-      "font": "",
-      "characterSize": 40,
-      "color": {
-        "b": 255,
-        "g": 255,
-        "r": 255
-      }
-    },
-    {
-      "bold": true,
-      "italic": false,
-      "name": "Snumber",
-      "smoothed": true,
-      "tags": "",
-      "type": "TextObject::Text",
-      "underlined": false,
-      "variables": [],
-      "effects": [],
-      "behaviors": [],
-      "string": "0",
-      "font": "",
-      "characterSize": 40,
-      "color": {
-        "b": 255,
-        "g": 255,
-        "r": 255
-      }
     },
     {
       "name": "DPadBottom",
@@ -790,6 +782,15 @@
         "includeConfig": 0
       },
       "target": "mobile controls"
+    },
+    {
+      "disabled": false,
+      "folded": false,
+      "type": "BuiltinCommonInstructions::Link",
+      "include": {
+        "includeConfig": 0
+      },
+      "target": "Highscore"
     }
   ],
   "layers": [
