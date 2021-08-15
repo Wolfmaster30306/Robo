@@ -49,27 +49,6 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "ModVarGlobal"
-              },
-              "parameters": [
-                "",
-                "=",
-                "TimerElapsedTime(\"wait\")"
-              ],
-              "subInstructions": []
-            }
-          ],
-          "events": []
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
               "type": {
@@ -118,18 +97,79 @@
                 "\"wait\""
               ],
               "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "enemys",
+                "enemyspawn.X(\"5\")",
+                "enemyspawn.Y(\"5\")",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "enemys",
+                "enemyspawn.X(\"3\")",
+                "enemyspawn.Y(\"3\")",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "enemys",
+                "enemyspawn.X(\"1\")",
+                "enemyspawn.Y(\"1\")",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "enemys",
+                "enemyspawn.X(\"4\")",
+                "enemyspawn.Y(\"4\")",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "enemys",
+                "enemyspawn.X(\"2\")",
+                "enemyspawn.Y(\"2\")",
+                ""
+              ],
+              "subInstructions": []
             }
           ],
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [],
-              "events": []
-            }
-          ]
+          "events": []
         }
       ],
       "parameters": []
@@ -185,7 +225,7 @@
       "creationTime": 0,
       "disabled": false,
       "folded": true,
-      "name": "lives",
+      "name": "movment",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
       "events": [
@@ -194,29 +234,78 @@
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [],
-          "actions": [],
-          "events": []
-        }
-      ],
-      "parameters": []
-    },
-    {
-      "colorB": 228,
-      "colorG": 176,
-      "colorR": 74,
-      "creationTime": 0,
-      "disabled": false,
-      "folded": true,
-      "name": "game over",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "AddForceVersPos"
+              },
+              "parameters": [
+                "enemys",
+                "triggerwall.X(\"2\")",
+                "triggerwall.Y(\"2\")",
+                "0.01",
+                "1"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "AddForceVersPos"
+              },
+              "parameters": [
+                "enemys",
+                "triggerwall.X(\"1\")",
+                "triggerwall.Y(\"1\")",
+                "0.01",
+                "1"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "AddForceVersPos"
+              },
+              "parameters": [
+                "enemys",
+                "triggerwall.X(\"5\")",
+                "triggerwall.Y(\"5\")",
+                "0.01",
+                "1"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "AddForceVersPos"
+              },
+              "parameters": [
+                "enemys",
+                "triggerwall.X(\"4\")",
+                "triggerwall.Y(\"4\")",
+                "0.01",
+                "1"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "AddForceVersPos"
+              },
+              "parameters": [
+                "enemys",
+                "triggerwall.X(\"3\")",
+                "triggerwall.Y(\"3\")",
+                "0.01",
+                "1"
+              ],
+              "subInstructions": []
+            }
+          ],
           "events": []
         }
       ],

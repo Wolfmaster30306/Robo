@@ -28,7 +28,7 @@
             "value": "ModVarGlobal"
           },
           "parameters": [
-            "",
+            "Highscore",
             "=",
             "GlobalVariable(Score)"
           ],

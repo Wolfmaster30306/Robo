@@ -275,8 +275,8 @@
       "name": "enemyspawn",
       "persistentUuid": "a3c13929-4e94-4f5a-8a3f-cd03fbceac13",
       "width": 2280,
-      "x": -116,
-      "y": 1167,
+      "x": -66,
+      "y": 1173,
       "zOrder": 74,
       "numberProperties": [],
       "stringProperties": [],
@@ -765,7 +765,33 @@
                 {
                   "hasCustomCollisionMask": false,
                   "image": "triggerwall-1.png",
-                  "points": [],
+                  "points": [
+                    {
+                      "name": "1",
+                      "x": -2,
+                      "y": 32.5
+                    },
+                    {
+                      "name": "2",
+                      "x": 66,
+                      "y": 34.5
+                    },
+                    {
+                      "name": "3",
+                      "x": 32,
+                      "y": 32
+                    },
+                    {
+                      "name": "4",
+                      "x": 45,
+                      "y": 36.5
+                    },
+                    {
+                      "name": "5",
+                      "x": 14,
+                      "y": 33.5
+                    }
+                  ],
                   "originPoint": {
                     "name": "origine",
                     "x": 0,
@@ -1001,6 +1027,30 @@
             "yes",
             "",
             ""
+          ],
+          "subInstructions": []
+        },
+        {
+          "type": {
+            "inverted": false,
+            "value": "ModVarGlobal"
+          },
+          "parameters": [
+            "Lives",
+            "=",
+            "10"
+          ],
+          "subInstructions": []
+        },
+        {
+          "type": {
+            "inverted": false,
+            "value": "ModVarGlobal"
+          },
+          "parameters": [
+            "Score",
+            "=",
+            "0"
           ],
           "subInstructions": []
         }
