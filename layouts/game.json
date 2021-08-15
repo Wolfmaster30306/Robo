@@ -14,13 +14,13 @@
   "uiSettings": {
     "grid": false,
     "gridType": "rectangular",
-    "gridWidth": 100,
-    "gridHeight": 100,
+    "gridWidth": 64,
+    "gridHeight": 64,
     "gridOffsetX": 0,
     "gridOffsetY": 0,
     "gridColor": 10401023,
     "snap": false,
-    "zoomFactor": 0.5,
+    "zoomFactor": 0.45999999999999996,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -243,8 +243,8 @@
       "name": "Highscore",
       "persistentUuid": "ae34df6d-89e9-436a-9135-37e2819f82e3",
       "width": 0,
-      "x": 1506,
-      "y": 13,
+      "x": 28,
+      "y": 96,
       "zOrder": 72,
       "numberProperties": [],
       "stringProperties": [],
@@ -259,9 +259,89 @@
       "name": "hsn",
       "persistentUuid": "3ece20ed-b22e-4899-befd-1158440269b8",
       "width": 0,
-      "x": 1856,
-      "y": 17,
+      "x": 375,
+      "y": 102,
       "zOrder": 73,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 167,
+      "layer": "",
+      "locked": false,
+      "name": "enemyspawn",
+      "persistentUuid": "a3c13929-4e94-4f5a-8a3f-cd03fbceac13",
+      "width": 2280,
+      "x": -116,
+      "y": 1167,
+      "zOrder": 74,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 64,
+      "layer": "",
+      "locked": false,
+      "name": "triggerwall",
+      "persistentUuid": "d76fa18f-8609-4bc0-802a-543ca632493b",
+      "width": 2048,
+      "x": -64,
+      "y": -64,
+      "zOrder": 75,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "lives",
+      "persistentUuid": "400001ce-4bb3-45d7-b672-caa283d19079",
+      "width": 0,
+      "x": 1628,
+      "y": 13,
+      "zOrder": 76,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "nlives",
+      "persistentUuid": "ee03fb8b-c561-4ea6-8ba4-9e744f6e1bf6",
+      "width": 0,
+      "x": 1824,
+      "y": 19,
+      "zOrder": 77,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 164,
+      "layer": "",
+      "locked": false,
+      "name": "invisbarrair",
+      "persistentUuid": "19e1dc3f-c124-48ff-8d68-2109b6275e48",
+      "width": 1992,
+      "x": -13,
+      "y": 454,
+      "zOrder": -78,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -432,13 +512,7 @@
       "updateIfNotVisible": false,
       "variables": [],
       "effects": [],
-      "behaviors": [
-        {
-          "name": "DestroyOutside",
-          "type": "DestroyOutsideBehavior::DestroyOutside",
-          "extraBorder": 0
-        }
-      ],
+      "behaviors": [],
       "animations": [
         {
           "name": "NewObject",
@@ -672,6 +746,46 @@
       ]
     },
     {
+      "name": "triggerwall",
+      "tags": "",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "triggerwall",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.07999999821186066,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "triggerwall-1.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "borderwall",
       "tags": "",
       "type": "Sprite",
@@ -691,6 +805,152 @@
                 {
                   "hasCustomCollisionMask": false,
                   "image": "NewObject-1-4.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "enemyspawn",
+      "tags": "",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "enemyspawn",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.07999999821186066,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "enemyspawn-1.png",
+                  "points": [
+                    {
+                      "name": "1",
+                      "x": 1.5,
+                      "y": 35.5
+                    },
+                    {
+                      "name": "2",
+                      "x": 47,
+                      "y": 34.5
+                    },
+                    {
+                      "name": "3",
+                      "x": 32,
+                      "y": 32
+                    },
+                    {
+                      "name": "4",
+                      "x": 16,
+                      "y": 31.5
+                    },
+                    {
+                      "name": "5",
+                      "x": 65.5,
+                      "y": 36.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bold": false,
+      "italic": false,
+      "name": "lives",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Lives:",
+      "font": "MechanismoRegular-p7ywa.otf",
+      "characterSize": 60,
+      "color": {
+        "b": 226,
+        "g": 144,
+        "r": 74
+      }
+    },
+    {
+      "bold": false,
+      "italic": false,
+      "name": "nlives",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "10",
+      "font": "MechanismoRegular-p7ywa.otf",
+      "characterSize": 60,
+      "color": {
+        "b": 226,
+        "g": 144,
+        "r": 74
+      }
+    },
+    {
+      "name": "invisbarrair",
+      "tags": "",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "invisalewall",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.07999999821186066,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "invisalewall-1.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
