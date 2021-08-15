@@ -253,22 +253,12 @@
           "conditions": [
             {
               "type": {
-                "inverted": true,
-                "value": "SystemInfo::HasTouchScreen"
-              },
-              "parameters": [
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
                 "inverted": false,
-                "value": "MouseButtonReleased"
+                "value": "KeyReleased"
               },
               "parameters": [
                 "",
-                "Left"
+                "Space"
               ],
               "subInstructions": []
             }
